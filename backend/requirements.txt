@@ -1,6 +1,11 @@
 asgiref==3.11.1
 Django==6.0.6
+django-cors-headers==4.9.0
 djangorestframework==3.17.1
+djangorestframework-simplejwt==5.5.1
 python-dotenv==1.2.2
 sqlparse==0.5.5
 tzdata==2026.2
+PyJWT==2.12.1
+pytz==2025.2
+psycopg2-binary
