@@ -45,7 +45,7 @@ pip install -r requirements.txt
 Make sure to generate and apply migrations for the `Product` model to initialize the SQLite database table:
 ```powershell
 # Generate migration files for the inventory system application
-python manage.py makemigrations GastroLog
+python manage.py makemigrations
 
 # Apply migrations to update the SQLite database
 python manage.py migrate
