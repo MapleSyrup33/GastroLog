@@ -144,9 +144,9 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 #### A.Record a kitchen Incident (Automated Deduction)
 When food waste is logged, GastroLog instantly deducts the quantity_wasted balance from the corresponding product's stock count.
 
-    - **Endpoint**: POST /inventory/waste/
-    - **Headers**: Authorization: Bearer < your_access_token >
-    - **Payload(JSON)**:
+- **Endpoint**: POST /inventory/waste/
+- **Headers**: Authorization: Bearer < your_access_token >
+- **Payload(JSON)**:
 ```
 {
     "product": 1,
