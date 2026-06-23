@@ -77,7 +77,7 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 ```text
 [http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
 ```
-### 1.  Authentication Lifecycle
+### 🔒1. Authentication Lifecycle
 #### A. Register a New Account
 
 - **Endpoint**: POST /auth/user/register/
@@ -104,8 +104,8 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 ```
 - **Expected Response**: Copy the long access token string from the JSON response. You will need it to authorize your next request
 
-### 2. Inventory System Lifecycle
- - **Important**: All Inventory endpoints require authorization. In your API client. go to the Auth tab, choose Bearer Token, and paste your copied access token.
+### 🍳2. Inventory System Lifecycle
+ - **⚠️Important**: All Inventory endpoints require authorization. In your API client. go to the Auth tab, choose Bearer Token, and paste your copied access token.
 
     #### A.Add a Product to Stock
     - **Endpoint**: POST /inventory/products/
@@ -139,7 +139,7 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 }
 ```
 
-### 3. Waste Log Intelligence & Stock Math
+### 🗑️3. Waste Log Intelligence & Stock Math
 
 #### A.Record a kitchen Incident (Automated Deduction)
 When food waste is logged, GastroLog instantly deducts the quantity_wasted balance from the corresponding product's stock count.
