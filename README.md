@@ -68,3 +68,99 @@ Once running, open your web browser and navigate to:
 - **Django Admin Panel**: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
 
 ---
+
+# 🧪 Testing Endpoints
+
+This project uses a REST architecture with **JSON Web Tokens (JWT)** for authentication. To test the workflows using an API client (like Postman, Insomnia, or Thunder Client), follow the sequential lifecycle below.
+
+### 🗺️ API Base URL
+```text
+[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
+```
+### 1.  Authentication Lifecycle
+#### A. Register a New Account
+
+- **Endpoint**: POST /auth/user/register/
+- **Headers**: Content-Type: application/json
+- **Payload(JSON)**:
+```
+{
+    "email": "chef.dave@gastrolog.com",
+    "username": "chef_dave",
+    "password": "SuperSecurePassword123",
+    "role": "manager"
+}
+```
+#### B. Generate Access and refresh JWT tokens
+
+- **Endpoint**: POST /auth/token/
+- **Headers**: Content-Type: application/json
+- **Payload(JSON)**:
+```
+{
+    "email": "chef.dave@gastrolog.com",
+    "password": "SuperSecurePassword123"
+}
+```
+- **Expected Response**: Copy the long access token string from the JSON response. You will need it to authorize your next request
+
+### 2. Inventory System Lifecycle
+ - **Important**: All Inventory endpoints require authorization. In your API client. go to the Auth tab, choose Bearer Token, and paste your copied access token.
+
+    #### A.Add a Product to Stock
+    - **Endpoint**: POST /inventory/products/
+    - **Headers**: Authorization: Bearer < your_access_token >
+    - **Payload(JSON)**:
+```
+{
+    "name": "AAA Alberta Beef Ribeye",
+    "sku": "PRO-RIB-001",
+    "category": "Proteins",
+    "price": "18.50",
+    "quantity": "50.00",
+    "unit": "Lbs",
+    "min_stock": "10.00",
+    "storage_location": "Walk-In Cooler",
+    "supplier": "Sysco"
+}
+```
+#### B. List All Tracked Products
+   - **Endpoint**: GET /inventory/products/
+   - **Headers**: Authorization: Bearer < your_access_token >
+   - **Note**: Note the id *of the Ribeye product returned in the response array (e.g., 1)*
+
+#### C. Update Product Stock (Manual Count Adjust)
+- **Endpoint**: PATCH /inventory/products/< id >/ (e.g., /inventory/products/1/)
+- **Headers**: Authorization: Bearer < your_access_token >
+- **Payload(JSON)**:
+```
+{
+    "quantity": "48.50"
+}
+```
+
+### 3. Waste Log Intelligence & Stock Math
+
+#### A.Record a kitchen Incident (Automated Deduction)
+When food waste is logged, GastroLog instantly deducts the quantity_wasted balance from the corresponding product's stock count.
+
+    - **Endpoint**: POST /inventory/waste/
+    - **Headers**: Authorization: Bearer < your_access_token >
+    - **Payload(JSON)**:
+```
+{
+    "product": 1,
+    "quantity_wasted": "3.50",
+    "reason": "Prep Error",
+    "notes": "New apprentice cook over-trimmed the subprimal chain link."
+}
+```
+- ***Verification***: if you re-fetch GET /inventory/products/1/ ,  you will see the physical quantity has dropped by exactly 3.50 automatically.
+
+#### B. Delete a Waste Entry (Error Correction / Reversal)
+
+if a log was submitted by mistake, deleting it reverses the calculation logic and safely adds the stock metrics back to the ingredient shelf.
+
+- **Endpoint**: DELETE /inventory/wate/< waste_id >/
+- **Headers**: Authorization: Bearer < your_access_token >
+---
