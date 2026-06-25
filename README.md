@@ -161,6 +161,6 @@ When food waste is logged, GastroLog instantly deducts the quantity_wasted balan
 
 if a log was submitted by mistake, deleting it reverses the calculation logic and safely adds the stock metrics back to the ingredient shelf.
 
-- **Endpoint**: DELETE /inventory/wate/< waste_id >/
+- **Endpoint**: DELETE /inventory/waste/< waste_id >/
 - **Headers**: Authorization: Bearer < your_access_token >
 ---
