@@ -1,8 +1,8 @@
 # 🍳 GastroLog Inventory System
 
-> **Simple food waste intelligence & inventory built specifically for busy restaurant operators.**
+> **A full-stack food waste intelligence & inventory application built with Django and React, designed specifically for busy restaurant operators.**
 
-GastroLog is a modern, responsive web application designed to help restaurant managers, chefs, and operators keep track of their stock levels, monitor wholesale food cost inflation, and reduce kitchen waste. With an elegant dark/light theme toggle and a glassmorphic user interface, GastroLog makes stock-taking frictionless and visually engaging.
+GastroLog is a modern, responsive full-stack web application designed to help restaurant managers, chefs, and operators keep track of their stock levels, monitor wholesale food cost inflation, and reduce kitchen waste. It combines a powerful Django REST Framework backend with a dynamic React frontend powered by Vite, featuring an elegant dark/light theme toggle and a glassmorphic user interface to make stock-taking frictionless and visually engaging.
 
 ---
 
@@ -23,49 +23,83 @@ GastroLog is a modern, responsive web application designed to help restaurant ma
 Follow these instructions to configure and run GastroLog on your Windows machine:
 
 ### 1. Prerequisites
-Ensure you have **Python 3.10+** installed on your system. You can check your version in PowerShell:
+Ensure you have the following installed on your system:
+- **Python 3.10+** (for the Django backend)
+- **Node.js 18+ & npm** (for the React frontend)
+
+Verify your installations in PowerShell:
 ```powershell
 python --version
+node --version
+npm --version
 ```
 
-### 2. Activate the Virtual Environment
-# Activate the virtual environment
+### 2. Backend Setup (Django)
+Navigate to the `backend` directory to set up the backend server:
+```powershell
+cd backend
 ```
-.\.venv\Scripts\activate
-```
-*(Note: If you need to create the environment, run `python -m venv .venv` and re-activate).*
 
-### 3. Install Dependencies
-Install all required packages (including Django 6.x, utility libraries, etc.) using `pip`:
+#### A. Activate the Virtual Environment
+Activate the virtual environment:
+```powershell
+.\venv\Scripts\activate
+```
+*(Note: If you need to create the environment first, run `python -m venv venv` and re-activate).*
+
+#### B. Install Backend Dependencies
+Install the required Python packages using `pip`:
 ```powershell
 pip install -r requirements.txt
 ```
 
-### 4. Create and Apply Database Migrations
-Make sure to generate and apply migrations for the `Product` model to initialize the SQLite database table:
+#### C. Create and Apply Database Migrations
+Generate and apply migrations for the database models to initialize the SQLite database:
 ```powershell
-# Generate migration files for the inventory system application
+# Generate migration files for the applications
 python manage.py makemigrations
 
-# Apply migrations to update the SQLite database
+# Apply migrations to update the database schema
 python manage.py migrate
 ```
 
-### 5. Create a Superuser Account (Optional)
+#### D. Create a Superuser Account (Optional)
 If you want to view or manage raw database entries in Django's built-in administration panel:
 ```powershell
 python manage.py createsuperuser
 ```
 Follow the prompts to set a username, email, and password.
 
-### 6. Run the Development Server
-Launch the server locally:
+#### E. Run the Backend Server
+Launch the Django development server locally:
 ```powershell
 python manage.py runserver
 ```
-Once running, open your web browser and navigate to:
-- **Landing Page**: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+The backend API and admin panel will be accessible at:
 - **Django Admin Panel**: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+- **API Base URL**: [http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
+
+---
+
+### 3. Frontend Setup (React + Vite)
+Open a new terminal window/tab and navigate to the `frontend` directory:
+```powershell
+cd frontend
+```
+
+#### A. Install Frontend Dependencies
+Install all the required Node packages using `npm`:
+```powershell
+npm install
+```
+
+#### B. Run the Frontend Development Server
+Start the frontend development server:
+```powershell
+npm run dev
+```
+Once the Vite development server is running, you can access the frontend in your web browser at:
+- **Frontend URL**: [http://localhost:5173/](http://localhost:5173/)
 
 ---
 
