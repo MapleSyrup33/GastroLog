@@ -15,10 +15,6 @@ function RegisterAndLogout() {
   return <Register/>
 }
 function App() {
-  const handleNavigate = (page) => {
-    console.log(`Navigating to ${page}`);
-  };
-
   return (
     <>
     <BrowserRouter>

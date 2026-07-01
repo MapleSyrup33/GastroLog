@@ -1,11 +1,13 @@
 import { ArrowRight, ClipboardList, TrendingUp, Trash2 } from 'lucide-react';
 import Header from '../components/Header';
+import { useNavigate } from 'react-router';
 
-const Home = ({ onNavigate }) => {
+const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="landing-page">
       <div className="landing-container">
-          <Header onNavigate={onNavigate}/>
+          <Header/>
         
         {/* Hero Section with particle canvas overlay */}
         <main className="landing-hero">        
@@ -18,7 +20,7 @@ const Home = ({ onNavigate }) => {
             </p>
             <div className="hero-buttons">
               <button 
-                onClick={() => onNavigate('register')} 
+                onClick={() => navigate('/register')} 
                 className="primary-btn hero-cta" 
                 style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
               >

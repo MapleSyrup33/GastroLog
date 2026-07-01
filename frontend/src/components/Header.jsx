@@ -1,7 +1,8 @@
 import { Layers, Sun, Moon, ArrowRight } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
-
-function Header({ onNavigate }) {
+import { useNavigate } from "react-router";
+function Header() {
+  const navigate = useNavigate();
     const { theme, toggleTheme } = useTheme();
   return (
     <>
@@ -23,7 +24,7 @@ function Header({ onNavigate }) {
             {theme === "light" ? <Moon /> : <Sun />}
           </button>
           <button
-            onClick={() => onNavigate("dashboard")}
+            onClick={() => navigate("/register")}
             className="primary-btn"
             style={{
               textDecoration: "none",
@@ -37,7 +38,7 @@ function Header({ onNavigate }) {
             />
           </button>
           <button
-            onClick={() => onNavigate("dashboard")}
+            onClick={() => navigate("/login")}
             className="primary-btn"
             style={{
               textDecoration: "none",
