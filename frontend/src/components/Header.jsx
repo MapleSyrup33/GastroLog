@@ -10,7 +10,10 @@ function Header() {
       <header className="landing-header">
         <div className="logo-group">
           <div className="brand-logo">
+          <button className="action-btn-icon"
+          onClick={() => navigate("/")}>
             <Layers className="logo-icon" />
+          </button>
           </div>
           <span className="brand-name">GastroLog</span>
         </div>
