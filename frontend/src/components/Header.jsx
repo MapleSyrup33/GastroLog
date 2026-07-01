@@ -1,6 +1,8 @@
 import { Layers, Sun, Moon, ArrowRight } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
-function Header({ onNavigate, theme, onToggleTheme }) {
+function Header({ onNavigate }) {
+    const { theme, toggleTheme } = useTheme();
   return (
     <>
       {/* Header Navigation */}
@@ -15,7 +17,7 @@ function Header({ onNavigate, theme, onToggleTheme }) {
         <div className="header-actions">
           <button
             className="action-btn-icon"
-            onClick={onToggleTheme}
+            onClick={toggleTheme}
             title="Toggle Light/Dark Mode"
           >
             {theme === "light" ? <Moon /> : <Sun />}

@@ -5,11 +5,10 @@ const Home = ({ onNavigate }) => {
   return (
     <div className="landing-page">
       <div className="landing-container">
-          <Header/>
+          <Header onNavigate={onNavigate}/>
         
         {/* Hero Section with particle canvas overlay */}
-        <main className="landing-hero">
-          
+        <main className="landing-hero">        
           <div className="hero-content">
             <h1 className="hero-title">
               Kitchens run on speed.<br />We handle the <span>margins</span>.
@@ -19,7 +18,7 @@ const Home = ({ onNavigate }) => {
             </p>
             <div className="hero-buttons">
               <button 
-                onClick={() => onNavigate('dashboard')} 
+                onClick={() => onNavigate('register')} 
                 className="primary-btn hero-cta" 
                 style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
               >
