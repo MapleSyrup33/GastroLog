@@ -114,8 +114,8 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 ### 🔒1. Authentication Lifecycle
 #### A. Register a New Account
 
-- **Endpoint**: POST /auth/user/register/
-- **Headers**: Content-Type: application/json
+- **Endpoint**: `POST /auth/user/register/`
+- **Headers**: `Content-Type: application/json`
 - **Payload(JSON)**:
 ```
 {
@@ -127,8 +127,8 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 ```
 #### B. Generate Access and refresh JWT tokens
 
-- **Endpoint**: POST /auth/token/
-- **Headers**: Content-Type: application/json
+- **Endpoint**: `POST /auth/token/`
+- **Headers**: `Content-Type: application/json`
 - **Payload(JSON)**:
 ```
 {
@@ -142,8 +142,8 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
  - **⚠️Important**: All Inventory endpoints require authorization. In your API client. go to the Auth tab, choose Bearer Token, and paste your copied access token.
 
     #### A.Add a Product to Stock
-    - **Endpoint**: POST /inventory/products/
-    - **Headers**: Authorization: Bearer < your_access_token >
+    - **Endpoint**: `POST /inventory/products/`
+    - **Headers**: Authorization: `Bearer <your_access_token>`
     - **Payload(JSON)**:
 ```
 {
@@ -159,13 +159,13 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 }
 ```
 #### B. List All Tracked Products
-   - **Endpoint**: GET /inventory/products/
-   - **Headers**: Authorization: Bearer < your_access_token >
+   - **Endpoint**: `GET /inventory/products/`
+   - **Headers**: Authorization: `Bearer <your_access_token>`
    - **Note**: Note the id *of the Ribeye product returned in the response array (e.g., 1)*
 
 #### C. Update Product Stock (Manual Count Adjust)
-- **Endpoint**: PATCH /inventory/products/< id >/ (e.g., /inventory/products/1/)
-- **Headers**: Authorization: Bearer < your_access_token >
+- **Endpoint**: `PATCH /inventory/products/<id>/` (e.g., /inventory/products/1/)
+- **Headers**: Authorization: `Bearer <your_access_token>`
 - **Payload(JSON)**:
 ```
 {
@@ -178,8 +178,8 @@ This project uses a REST architecture with **JSON Web Tokens (JWT)** for authent
 #### A.Record a kitchen Incident (Automated Deduction)
 When food waste is logged, GastroLog instantly deducts the quantity_wasted balance from the corresponding product's stock count.
 
-- **Endpoint**: POST /inventory/waste/
-- **Headers**: Authorization: Bearer < your_access_token >
+- **Endpoint**: `POST /inventory/waste/`
+- **Headers**: Authorization: `Bearer <your_access_token>`
 - **Payload(JSON)**:
 ```
 {
@@ -189,12 +189,12 @@ When food waste is logged, GastroLog instantly deducts the quantity_wasted balan
     "notes": "New apprentice cook over-trimmed the subprimal chain link."
 }
 ```
-- ***Verification***: if you re-fetch GET /inventory/products/1/ ,  you will see the physical quantity has dropped by exactly 3.50 automatically.
+- ***Verification***: if you re-fetch GET `/inventory/products/1/` ,  you will see the physical quantity has dropped by exactly 3.50 automatically.
 
 #### B. Delete a Waste Entry (Error Correction / Reversal)
 
 if a log was submitted by mistake, deleting it reverses the calculation logic and safely adds the stock metrics back to the ingredient shelf.
 
-- **Endpoint**: DELETE /inventory/waste/< waste_id >/
-- **Headers**: Authorization: Bearer < your_access_token >
+- **Endpoint**: DELETE `/inventory/waste/<waste_id>/`
+- **Headers**: Authorization: `Bearer <your_access_token>`
 ---
