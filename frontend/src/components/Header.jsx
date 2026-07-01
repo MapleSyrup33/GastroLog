@@ -1,5 +1,5 @@
 import { Layers, Sun, Moon, ArrowRight } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "../hooks/useTheme";
 
 function Header({ onNavigate }) {
     const { theme, toggleTheme } = useTheme();
