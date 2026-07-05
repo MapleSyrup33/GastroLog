@@ -1,4 +1,4 @@
-from rest_frameworks import serializers
+from rest_framework import serializers
 from .models import Product, WasteLog
 from django.contrib.auth import get_user_model
 
