@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'
+import Dashboard from './pages/Dashboard.jsx';
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './styles/App.css'
+
 function Logout() {
   localStorage.clear()
   return <Navigate to="/login" />
@@ -22,6 +24,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<RegisterAndLogout/>}/>
+      <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
      </Routes>
     </BrowserRouter>
     </>
