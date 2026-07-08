@@ -977,8 +977,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px 24px;
     border-bottom: 1px solid var(--border-color);
+    gap: 16px;
 }
 
 .landing-header .logo-group {
